@@ -3,6 +3,8 @@ const router = express.Router();
 
 
 router.post('/', );
+router.post('/:id/borrow', );
+router.post('/:id/return', );
 router.get('/', );
 router.get('/:id', );
 router.put('/:id' );
