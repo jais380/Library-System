@@ -5,7 +5,17 @@ require('dotenv').config();
 
 port = process.env.PORT || 5000;
 
+// Routes
+const attendantRoutes = require('./routes/attendant');
+const authorRoutes = require('./routes/author');
+const bookRoutes = require('./routes/book');
+const studentRoutes = require('./routes/student');
+
 app.use(express.json());
+app.use('/attendants', attendantRoutes);
+app.use('/authors', authorRoutes);
+app.use('/books', bookRoutes);
+app.use('/students', studentRoutes);
 
 const startServer = async () => {
     try {
