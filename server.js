@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const { connectDB } = require('./config/database')
 const app = express();
-require('dotenv').config();
 
-port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // Routes
 const attendantRoutes = require('./routes/attendant');
@@ -20,7 +20,7 @@ app.use('/students', studentRoutes);
 const startServer = async () => {
     try {
         await connectDB();
-        app.listen(() => {
+        app.listen(port, () => {
             console.log(`Server running on port ${port}`)
         });
     }
