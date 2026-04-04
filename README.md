@@ -157,7 +157,7 @@ DELETE /authors/:id
 
 ---
 
-# 📚 Books
+# Books
 
 ### Create Book
 
@@ -214,7 +214,7 @@ DELETE /books/:id
 
 ---
 
-# 👨‍🎓 Students
+# Students
 
 ### Create Student
 
@@ -250,7 +250,7 @@ GET /students/:id
 
 ---
 
-# 🧑‍💼 Library Attendants
+# Library Attendants
 
 ### Create Attendant
 
