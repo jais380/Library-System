@@ -325,9 +325,7 @@ The full API collection used for testing is included as a **Postman collection**
 
 Click the link to access full API documentation on Postman:
 
-```
 https://web.postman.co/workspace/05c667ad-a349-4829-817c-0b83cb76a218/documentation/42947527-2d5d2513-957b-46ad-b355-1c0cf31434b4
-```
 
 ---
 
