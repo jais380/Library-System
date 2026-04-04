@@ -1,5 +1,4 @@
 const authorModel = require('../models/author.model');
-const { validate, exists } = require('../models/book.model');
 
 exports.createAuthor = async (req, res) => {
     try {
@@ -13,7 +12,10 @@ exports.createAuthor = async (req, res) => {
             return res.status(400).json({error: "Bio cannot be left blank"});
         }
 
-        const responseData = await authorModel.create(req.body); // create author
+        const responseData = await authorModel.create({
+            name: req.body.name.trim(),
+            ...req.body
+        }); // create author
 
         res.status(201).json({message: "Author Created Successfully", data: responseData});
     } catch(err) {
@@ -59,14 +61,20 @@ exports.updateAuthor = async (req, res) => {
     try {
         const authorId = req.params.id;
 
-        const updatedAuthor = await authorModel.findByIdAndUpdate(authorId, req.body, {new: true});
+        if(!req.body || !req.body.name || !req.body.bio) {
+            return res.status(400).json({error: "Name or Bio of Author is missing"});
+        }
+
+        const { name, bio } = req.body;
+
+        const updatedAuthor = await authorModel.findByIdAndUpdate(authorId, { name, bio }, {new: true});
 
         // validate updatedAuthor exists
         if (!updatedAuthor) {
-           return res.status(404).json({error: "Author does not exist"})
+           return res.status(404).json({error: "Author does not exist"});
         }
 
-        res.status(200).json({data: updatedAuthor})
+        res.status(200).json({data: updatedAuthor});
     } catch(err) {
         res.status(400).json({error: err.message});
     }
