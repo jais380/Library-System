@@ -310,6 +310,15 @@ Rules:
 POST /books/:id/return
 ```
 
+Body:
+
+
+```json
+{
+  "borrowedBy": "studentId"
+}
+```
+
 After returning:
 
 * status → `IN`
